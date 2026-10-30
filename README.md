@@ -4,13 +4,13 @@ aura.travel is a global accommodation platform founded in Australia. It connects
 vacation homes, hotels, apartments and short-term stays worldwide, through a fair, low-commission model.
 
 Its MCP server lets AI agents search those stays, read their details and get exact prices for a traveller's dates
-and party, then hand the traveller to aura.travel to book.
-
-> **Status: preview.** The endpoint is being rolled out. This repository becomes public when it is live.
+and party, then hand the traveller to aura.travel to book. It also tells hosts how to list their property, and
+software companies how to connect their systems.
 
 - **Endpoint:** `https://ai.aura.travel/mcp` (MCP over Streamable HTTP, stateless JSON-RPC POST)
 - **Read-only:** no tool creates, changes or cancels anything. The traveller books on aura.travel.
-- **Developer page:** https://aura.travel/ai-agents.html
+- **Developer page:** https://aura.travel/ai-agents.html (also as Markdown: https://aura.travel/ai-agents.md)
+- **Server card:** https://ai.aura.travel/mcp/server-card
 
 ## Who can connect
 
@@ -37,7 +37,7 @@ Keys can be rotated and revoked. A revoked key is refused at its next use.
 
 ## Tools
 
-All three are read-only (`readOnlyHint: true`, `destructiveHint: false`), with an `outputSchema` and
+All five are read-only (`readOnlyHint: true`, `destructiveHint: false`), with an `outputSchema` and
 `structuredContent`. Prices are in AUD.
 
 ### `search_stays`: Search stays
@@ -50,6 +50,8 @@ Stays in or near a place, optionally for dates and a party, 10 a page, best firs
 | `check_in`, `check_out` | date `YYYY-MM-DD` | Give both or neither; 1 to 30 nights |
 | `adults` | integer 1–16 | Default 1 |
 | `children` | integer 0–10 | Aged 0–12; default 0; at most 16 guests in all |
+| `price_min`, `price_max` | integer | Nightly price range, AUD |
+| `facilities` | array | Any of `pet_friendly`, `wheelchair_access`, `air_conditioning`, `parking`, `internet`, `pool` |
 | `cursor` | string | `next_cursor` from the previous page |
 
 Each stay has its `listing_id`, name, place, rating and review count, an indicative `from_price` per night, whether it
@@ -62,7 +64,7 @@ books instantly (eligible stays) or on request, and its page on aura.travel.
 | `listing_id` | integer, from `search_stays` |
 
 The description, amenities, rooms, check-in and check-out times, cancellation policy, up to 5 photos, the rating and
-review count, and a link to book. Host-written text is plain text, at most 1,500 characters, with contact details
+review count, and a `booking_url`. Host-written text is plain text, at most 1,500 characters, with contact details
 removed.
 
 ### `quote_stay`: Price a stay
@@ -77,10 +79,24 @@ removed.
 Exact offers, cheapest first, as the stay's page on aura.travel shows them. Each offer has:
 - `offer_id` and `room_id`;
 - `total`: the whole stay, fees and taxes included;
+- `totals`: the lines of that total (`subtotal`, `fee`, `tax`, `discount`, then `total`), as the page's price
+  breakdown shows them; every line but `total` adds up to `total`;
 - `pay_now`: paid online on aura.travel's checkout (its booking service fee and any levy it collects);
 - `pay_property`: the balance, which the property charges under its own payment terms;
-- whether it is refundable, and whether it books instantly or on request;
+- `cancellation_policy`: the host's cancellation terms, plain text; `refundable` when those terms say so;
+- whether it books instantly or on request;
 - `booking_url`.
+
+### `list_your_property`: List a property on aura.travel
+
+For someone who owns or manages accommodation. Takes no input. Returns how listing works (a flat 10% booking service
+fee, paid by the guest, with no listing or nightly fees), the steps, the channel managers and calendars aura.travel
+connects to today with how to connect each, a `signup_url` and a `contact_url`.
+
+### `integrate_with_aura`: Integrate software with aura.travel
+
+For a company that builds channel-manager, PMS or booking software for accommodation providers. Takes no input.
+Returns how systems connect to aura.travel today and a `contact_url` to start an integration.
 
 ## Booking: hand the traveller over
 
@@ -95,8 +111,8 @@ Prices can change between a quote and the booking. The page always shows the cur
 - Each agent has a limit per minute and per day, set when it is approved: 60 tool calls a minute and 5,000 a day
   unless we agree otherwise. Past a limit, a tool answers `rate_limited` with `retry_after` in seconds.
 - Business outcomes are tool errors (`isError: true`) with a `code`: `place_not_found`, `listing_not_found`,
-  `no_availability`, `invalid_stay`, `not_allowed`, `rate_limited`. Don't change the place, dates or party yourself
-  after one of these: ask the traveller.
+  `no_availability`, `invalid_stay`, `not_allowed`, `rate_limited`. The first three also carry `retry_guidance`:
+  ask the traveller before changing the place, dates or party; don't change them yourself.
 - HTTP: `401` for an unknown or revoked agent; `400` for a bad request, batches included (send one JSON-RPC message
   per request); `413` over 64 KB; `503` while assistants are switched off.
 
@@ -114,13 +130,15 @@ See [`examples/`](examples/):
 - [VS Code](examples/vscode-mcp.json)
 - [Raw HTTP with curl](examples/curl.md)
 
-## Registry
+## Discovery
 
-[`server.json`](server.json) is this server's entry for the official MCP Registry, as `travel.aura/stays`.
+- [`server.json`](server.json): this server's entry for the official MCP Registry, as `travel.aura/stays`.
+- Server card: https://ai.aura.travel/mcp/server-card (listed in https://aura.travel/.well-known/ai-catalog.json).
+- https://aura.travel/llms.txt
 
 ## Contact and terms
 
-- Questions: support@aura.travel
+- Questions and integrations: https://aura.travel/contact-us.html
 - Terms for AI agents: https://aura.travel/ai-agent-terms.html
 - Privacy: https://aura.travel/privacy-policy.html
 
