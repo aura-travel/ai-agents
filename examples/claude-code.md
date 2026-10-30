@@ -8,5 +8,5 @@ claude mcp add --transport http aura-travel https://ai.aura.travel/mcp \
   --header "Authorization: Bearer $AURA_AGENT_KEY"
 ```
 
-Check it with `claude mcp list`. Then ask, for example: "Find a stay in Byron Bay for 2 adults, 12 to 15 December,
+Check it with `claude mcp list`. Then ask, for example: "Find a stay in Byron Bay, NSW, Australia for 2 adults, 12 to 15 December,
 and price the best one."

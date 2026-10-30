@@ -46,7 +46,7 @@ Stays in or near a place, optionally for dates and a party, 10 a page, best firs
 
 | Input | Type | Notes |
 |---|---|---|
-| `place` | string | A town, suburb or area, e.g. "Byron Bay" |
+| `place` | string | The town, suburb or area with its state and country, e.g. "Byron Bay, NSW, Australia" or "Richmond, VIC, Australia" |
 | `check_in`, `check_out` | date `YYYY-MM-DD` | Give both or neither; 1 to 30 nights |
 | `adults` | integer 1–16 | Default 1 |
 | `children` | integer 0–10 | Aged 0–12; default 0; at most 16 guests in all |
@@ -56,6 +56,10 @@ Stays in or near a place, optionally for dates and a party, 10 a page, best firs
 
 Each stay has its `listing_id`, name, place, rating and review count, an indicative `from_price` per night, whether it
 books instantly (eligible stays) or on request, and its page on aura.travel.
+
+`other_places` lists the other places that share the town's name when `place` was given without its state or country
+(e.g. "Richmond"); it is empty otherwise. When it is not empty and the traveller hasn't said which place they mean, ask
+them and search again with the full name.
 
 ### `get_stay`: Stay details
 
