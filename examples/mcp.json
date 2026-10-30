@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "aura-travel": {
+      "type": "http",
+      "url": "https://ai.aura.travel/mcp",
+      "headers": {
+        "Authorization": "Bearer ${AURA_AGENT_KEY}"
+      }
+    }
+  }
+}

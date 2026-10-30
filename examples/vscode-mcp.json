@@ -1,0 +1,19 @@
+{
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "aura-agent-key",
+      "description": "aura.travel agent key",
+      "password": true
+    }
+  ],
+  "servers": {
+    "aura-travel": {
+      "type": "http",
+      "url": "https://ai.aura.travel/mcp",
+      "headers": {
+        "Authorization": "Bearer ${input:aura-agent-key}"
+      }
+    }
+  }
+}

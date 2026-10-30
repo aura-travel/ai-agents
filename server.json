@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "travel.aura/stays",
+  "title": "aura.travel stays",
+  "description": "Search, describe and price Australian stays on aura.travel. Read-only; book on aura.travel.",
+  "version": "1.0.0",
+  "websiteUrl": "https://aura.travel/ai-agents.html",
+  "repository": {
+    "url": "https://github.com/aura-travel/ai-agents",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://ai.aura.travel/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <your aura.travel agent key>. Request one at https://aura.travel/ai-agents.html",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
