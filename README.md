@@ -129,6 +129,7 @@ else, to pay a host or anyone else directly to secure a booking.
 ## Connect
 
 See [`examples/`](examples/):
+- [Claude (claude.ai and the Claude apps), including admin setup](examples/claude-ai.md)
 - [Claude Code](examples/claude-code.md)
 - [An `.mcp.json` file](examples/mcp.json) (Claude Code project config and compatible clients)
 - [VS Code](examples/vscode-mcp.json)
