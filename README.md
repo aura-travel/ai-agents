@@ -26,10 +26,10 @@ Requests from anyone else are refused with `401`.
 
 ## Get an agent key
 
-1. Request access on the developer page: https://aura.travel/ai-agents.html. Give your name, company, website,
-   a contact email, what your agent does and the calls a day you expect.
-2. We review the request. When it is approved, the contact email receives a one-time link that shows your key
-   **once**.
+1. Request access at https://aura.travel/agent/request: your agent's name, company, website, a contact email, what
+   your agent does and the tool calls a day you expect. No account is needed.
+2. We review the request. When it is approved, the contact email receives a link, valid for 7 days, to a page that
+   shows your key **once**: press the button there to reveal it. After that the link no longer works.
 3. Store the key in your agent's secret store or configuration, never in a prompt or a chat, and send it on every
    request.
 
@@ -92,8 +92,8 @@ Prices can change between a quote and the booking. The page always shows the cur
 
 ## Limits and errors
 
-- Each agent has a limit per minute and per day, set when it is approved. Past a limit, a tool answers
-  `rate_limited` with `retry_after` in seconds.
+- Each agent has a limit per minute and per day, set when it is approved: 60 tool calls a minute and 5,000 a day
+  unless we agree otherwise. Past a limit, a tool answers `rate_limited` with `retry_after` in seconds.
 - Business outcomes are tool errors (`isError: true`) with a `code`: `place_not_found`, `listing_not_found`,
   `no_availability`, `invalid_stay`, `not_allowed`, `rate_limited`. Don't change the place, dates or party yourself
   after one of these: ask the traveller.
