@@ -19,7 +19,7 @@ Every caller is an approved **agent**. Travellers never sign in to search, read 
 | Agent | How it is recognised |
 |---|---|
 | ChatGPT | OpenAI's client certificate, presented on every connection |
-| Claude | Anthropic's network (`160.79.104.0/21`), or a key held by Anthropic for our directory listing |
+| Claude | Anthropic's network (`160.79.104.0/21`). Listed in Claude's connector directory: https://claude.ai/directory/aura-travel |
 | Any other agent or app | An **agent key**, sent on every request as `Authorization: Bearer <key>` |
 
 Requests from anyone else are refused with `401`.

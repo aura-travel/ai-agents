@@ -3,6 +3,8 @@
 The aura.travel connector needs nothing set up on aura.travel's side: no account, OAuth app, API key or IP allowlist.
 Claude reaches it from Anthropic's network, which aura.travel recognises.
 
+Directory listing: https://claude.ai/directory/aura-travel
+
 ## For admins (Team and Enterprise)
 
 1. In **Organization settings > Connectors**, add **aura.travel** from the directory.
@@ -17,8 +19,8 @@ Claude reaches it from Anthropic's network, which aura.travel recognises.
 Open **Customize > Connectors**, find **aura.travel** and connect it. Then ask, for example: "Find a pet-friendly stay
 in Byron Bay, NSW, Australia for 2 adults, 12 to 15 December, and price the best one."
 
-Before the listing appears in your directory, you can add it as a custom connector: **Customize > Connectors > Add
-custom connector**, URL `https://ai.aura.travel/mcp`, no sign-in.
+If you added aura.travel earlier as a custom connector with the same URL, remove that one first: Claude shows it in
+place of the directory listing.
 
 ## Data and booking
 
