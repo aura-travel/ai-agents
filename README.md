@@ -121,7 +121,7 @@ See [`examples/`](examples/):
 ## Contact and terms
 
 - Questions: support@aura.travel
-- Terms of use: https://aura.travel/terms-and-conditions.html
+- Terms for AI agents: https://aura.travel/ai-agent-terms.html
 - Privacy: https://aura.travel/privacy-policy.html
 
 This documentation is licensed under CC BY 4.0 (see [LICENSE](LICENSE)). The aura.travel name and logo are not.
