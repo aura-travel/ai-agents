@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "travel.aura/stays",
   "title": "aura.travel stays",
-  "description": "Search, describe and price Australian stays on aura.travel. Read-only; book on aura.travel.",
+  "description": "Search and price stays on aura.travel, a global accommodation platform founded in Australia.",
   "version": "1.0.0",
   "websiteUrl": "https://aura.travel/ai-agents.html",
   "repository": {

@@ -1,8 +1,10 @@
 # aura.travel for AI agents
 
-aura.travel is an Australian accommodation booking platform: holiday homes, cottages, B&Bs, motels and apartments in
-every Australian state and territory. Its MCP server lets AI agents search those stays, read their details and get
-exact prices for a traveller's dates and party, then hand the traveller to aura.travel to book.
+aura.travel is a global accommodation platform founded in Australia. It connects travellers with holiday rentals,
+vacation homes, hotels, apartments and short-term stays worldwide, through a fair, low-commission model.
+
+Its MCP server lets AI agents search those stays, read their details and get exact prices for a traveller's dates
+and party, then hand the traveller to aura.travel to book.
 
 > **Status: preview.** The endpoint is being rolled out. This repository becomes public when it is live.
 
@@ -51,7 +53,7 @@ Stays in or near a place, optionally for dates and a party, 10 a page, best firs
 | `cursor` | string | `next_cursor` from the previous page |
 
 Each stay has its `listing_id`, name, place, rating and review count, an indicative `from_price` per night, whether it
-books instantly or on request, and its page on aura.travel.
+books instantly (eligible stays) or on request, and its page on aura.travel.
 
 ### `get_stay`: Stay details
 
