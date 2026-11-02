@@ -8,6 +8,9 @@ and party, then hand the traveller to aura.travel to book. It also tells hosts h
 software companies how to connect their systems.
 
 - **Endpoint:** `https://ai.aura.travel/mcp` (MCP over Streamable HTTP, stateless JSON-RPC POST)
+- **Protocol versions:** `2026-07-28` (stateless: the version in each request's `_meta`, `server/discover`) and the
+  earlier `2025-11-25`, `2025-06-18`, `2025-03-26` and `2024-11-05` (with `initialize`). Each request is answered in
+  the version it asks for.
 - **Read-only:** no tool creates, changes or cancels anything. The traveller books on aura.travel.
 - **Developer page:** https://aura.travel/ai-agents.html (also as Markdown: https://aura.travel/ai-agents.md)
 - **Server card:** https://ai.aura.travel/mcp/server-card
