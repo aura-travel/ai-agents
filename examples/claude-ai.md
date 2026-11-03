@@ -11,8 +11,8 @@ Directory listing: https://claude.ai/directory/aura-travel
 2. Members connect it under **Customize > Connectors**, and can turn it on or off per chat from the **+** menu >
    **Connectors**.
 3. All five tools only read data. You can set them to **Always allow** so members aren't asked before each call. If
-   your members only travel, you can block `list_your_property` and `integrate_with_aura`, which are for accommodation
-   owners and software companies.
+   your members only travel, you can block `get_host_listing_info` and `get_integration_info`, which are for
+   accommodation owners and software companies.
 
 ## For individual users
 

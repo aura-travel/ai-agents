@@ -94,13 +94,13 @@ Exact offers, cheapest first, as the stay's page on aura.travel shows them. Each
 - whether it books instantly or on request;
 - `booking_url`.
 
-### `list_your_property`: List a property on aura.travel
+### `get_host_listing_info`: How listing a property on aura.travel works
 
 For someone who owns or manages accommodation. Takes no input. Returns how listing works (a flat 10% booking service
 fee, paid by the guest, with no listing or nightly fees), the steps, the channel managers and calendars aura.travel
 connects to today with how to connect each, a `signup_url` and a `contact_url`.
 
-### `integrate_with_aura`: Integrate software with aura.travel
+### `get_integration_info`: How software connects to aura.travel
 
 For a company that builds channel-manager, PMS or booking software for accommodation providers. Takes no input.
 Returns how systems connect to aura.travel today and a `contact_url` to start an integration.
